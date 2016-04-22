@@ -1,0 +1,73 @@
+* {
+	margin:0;
+	padding:0;
+}
+body {
+    background: #33495f;
+}
+.panorama {
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0; 
+	bottom: 0;
+	width:80%;
+	height:600px;
+	background:url('/img/panorama.png') repeat-x;
+	animation:panorama 10s linear infinite alternate;
+	animation-play-state:paused;
+	box-shadow: 0 0 100px #ccc;
+	margin:auto;
+	@at-root{
+		@keyframes panorama{
+			to{
+				background-position:100% 0;
+			}
+		}
+	}
+	&:hover{
+		animation-play-state:running;
+	}
+}
+.search{
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	width:400px;
+	height:400px;
+	.search-input{
+		width: 100%;
+		height: 30px;
+		input{
+			box-sizing: border-box;
+			padding:0 10px; 
+			width: 100%;
+			height: 30px;
+			line-height: 30px;
+			outline: none;
+			border-radius: 5px;
+		}
+	}
+	.result{
+		width: 100%;
+		margin-top: 10px;
+		height: 300px;
+		color:#fff;
+		ul{
+			list-style: none;
+			li{
+				display: inline-block;
+				box-sizing:border-box;
+				height: 30px;
+				line-height: 30px;
+				padding-left: 10px;
+				width: 100%;
+				margin-top: 8px;
+				border-radius:5px;
+			}
+		}
+	}
+}
