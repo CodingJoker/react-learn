@@ -1,5 +1,5 @@
 (function(){
-	'use strict';	
+	'use strict';
 	var DATA = ['uestc','zhumin','jumor'];
 	var Box = React.createClass({
 		getInitialState: function() {
@@ -23,11 +23,11 @@
 			return (
 				<div>
 					<SearchBar onUserInput={this.handleUserInput} />
-					<List  listData={this.state.listData} />
+					<List listData={this.state.listData} />
 				</div>
 			);
 		}
-	
+
 	});
 
 	var List = React.createClass({
@@ -44,8 +44,8 @@
 				</div>
 			);
 		}
-	
-	});	
+
+	});
 
 	var SearchBar = React.createClass({
 		handleChange:function(){
@@ -65,4 +65,5 @@
 		document.getElementById('example')
 		)
 }())
+//change
 
