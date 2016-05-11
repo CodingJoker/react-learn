@@ -75,7 +75,7 @@ gulp.task('gulp:commit', function(){
 
 // Run git push, remote is the remote repo, branch is the remote branch to push to
 gulp.task('gulp:push', ['gulp:commit'], function(cb){
-    return git.push('origin', 'master', cb, function(err){
+    return git.push(cb, function(err){
         if (err) throw err;
     });
 });
