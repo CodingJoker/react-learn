@@ -5,10 +5,14 @@
   "devDependencies": {
     "browser-sync": "^2.11.1",
     "gulp": "^3.9.1",
+    "gulp-git": "^1.7.1",
+    "gulp-prompt": "^0.2.0",
     "gulp-sass": "^2.1.1",
+    "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.5",
     "gulper": "^0.1.2",
-    "ps-tree": "^1.0.1"
+    "ps-tree": "^1.0.1",
+    "run-sequence": "^1.1.5"
   },
   "author": "ZhuMin"
 }

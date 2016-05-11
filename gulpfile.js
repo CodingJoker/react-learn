@@ -1,8 +1,12 @@
-var gulp        = require('gulp');
-var sass        = require('gulp-sass');
-var browserSync = require('browser-sync').create();
-var watch       = require('gulp-watch');
-var cp       = require('child_process');
+var gulp        = require('gulp'),
+    sass        = require('gulp-sass'),
+    browserSync = require('browser-sync').create(),
+    watch       = require('gulp-watch'),
+    cp          = require('child_process'),
+    gutil       = require('gulp-util'),
+    git         = require('gulp-git'),
+    prompt      = require('gulp-prompt'),
+    runSequence = require('run-sequence');
 // 静态服务器
 
 var option = {
@@ -52,6 +56,41 @@ gulp.task('serve',function(){
     gulp.watch('gulpfile.js',restart).on('error',function(e){
         console.log("error")
     });
+});
+
+gulp.task('gulp:commit', function(){
+  // just source anything here - we just wan't to call the prompt for now
+  return gulp.src('./*')
+  .pipe(prompt.prompt({
+    type: 'input',
+    name: 'commit',
+    message: 'Please enter commit message:'
+  }, function(res){
+    // now add all files that should be committed
+    // but make sure to exclude the .gitignored ones, since gulp-git tries to commit them, too
+    return gulp.src([ '!node_modules/', './*' ], {buffer:false})
+    .pipe(git.commit(res.commit));
+   }));
+});
+
+// Run git push, remote is the remote repo, branch is the remote branch to push to
+gulp.task('gulp:push', ['gulp:commit'], function(cb){
+    return git.push('origin', 'master', cb, function(err){
+        if (err) throw err;
+    });
+});
+
+// # task completed notification with green color!
+gulp.task('gulp:done', ['gulp:push'], function(){
+  console.log('');
+  gutil.log(gutil.colors.green('************** Git push is done! **************'));
+  console.log('');
+  done();
+});
+
+// gulp task to commit and push data on git
+gulp.task('github', function(){
+   return runSequence(['gulp:commit', 'gulp:push', 'gulp:done'])
 });
 
 

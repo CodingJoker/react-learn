@@ -1,5 +1,6 @@
 (function(){
 	'use strict';
+	//do
 	var DATA = ['uestc','zhumin','jumor'];
 	var Box = React.createClass({
 		getInitialState: function() {
