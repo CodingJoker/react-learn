@@ -1,6 +1,6 @@
 (function(){
 	'use strict';
-	//cmd test
+	//cmd 5.12
 	var DATA = ['uestc','zhumin','jumor'];
 	var Box = React.createClass({
 		getInitialState: function() {
