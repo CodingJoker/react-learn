@@ -9,6 +9,7 @@ var gulp        = require('gulp'),
     runSequence = require('run-sequence');
 // 静态服务器
 
+
 var option = {
     src:'app'
 }
